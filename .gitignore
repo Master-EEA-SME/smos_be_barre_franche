@@ -1,0 +1,12 @@
+*
+!.gitignore
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!*.vhd
+!*.qsf
+!*.qpf
+!*/
+*_bsp
+db
