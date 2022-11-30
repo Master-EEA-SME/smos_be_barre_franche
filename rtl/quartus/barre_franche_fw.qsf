@@ -56,15 +56,11 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_anemometre -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_girouette -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_anemometre -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_anemometre
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_anemometre
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_anemometre -section_id tb_anemometre
-set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_anemometre.vhd -section_id tb_anemometre
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_R8 -to pin_clk_i
 set_location_assignment PIN_E1 -to pin_btn_i[0]
 set_location_assignment PIN_J15 -to pin_arst_n_i
@@ -80,6 +76,13 @@ set_location_assignment PIN_M1 -to pin_sw_i[0]
 set_location_assignment PIN_T8 -to pin_sw_i[1]
 set_location_assignment PIN_B9 -to pin_sw_i[2]
 set_location_assignment PIN_M15 -to pin_sw_i[3]
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_girouette -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_girouette
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_girouette
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_girouette -section_id tb_girouette
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_anemometre.vhd -section_id tb_anemometre
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_girouette.vhd -section_id tb_girouette
+set_global_assignment -name VHDL_FILE ../src/f1/girouette.vhd
 set_global_assignment -name VHDL_FILE ../src/utils/pwm/pwm.vhd
 set_global_assignment -name SDC_FILE ../constraints/timing.sdc
 set_global_assignment -name VHDL_FILE ../src/top.vhd
@@ -88,4 +91,7 @@ set_global_assignment -name VHDL_FILE ../src/utils/utils.vhd
 set_global_assignment -name VHDL_FILE ../src/utils/pulse.vhd
 set_global_assignment -name VHDL_FILE ../src/utils/edge_detector.vhd
 set_global_assignment -name VHDL_FILE ../src/f1/anemometre.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

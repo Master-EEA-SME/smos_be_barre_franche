@@ -29,7 +29,8 @@ begin
 			sw_export => pin_sw_i,
 			led_export => pin_led_o,
             pwm0_export => pwm_internal,
-            anemo_export => pwm_internal
+            anemo_export => pwm_internal,
+            giro_export => pwm_internal
 		);
     
 end architecture rtl;

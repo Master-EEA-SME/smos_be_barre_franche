@@ -14,14 +14,24 @@ void pwm_set_configuration(void *base, uint32_t config)
 
 void pwm_set_frequency(void *base, uint32_t freq)
 {
-    uint32_t value = NIOS2_CPU_FREQ / freq;
+    uint32_t value = (10 * NIOS2_CPU_FREQ) / freq;
     PWM_SET_FREQUENCY(base, value);
 }
 
-void pwm_set_duty(void *base, uint8_t duty)
+void pwm_set_duty(void *base, uint32_t duty)
 {
     uint32_t value, freq;
     freq = PWM_GET_FREQUENCY(base);
-    value = (freq * duty) / 100;
+    value = (freq * duty) / 1000;
     PWM_SET_DUTY(base, value);
+}
+
+void pwm_set_ton_toff(void *base, uint32_t ton_us, uint32_t toff_us)
+{
+    uint32_t period, duty, freq;
+    period = ton_us + toff_us;
+    freq = (10000000 / period);
+    duty = (ton_us * 1000) / period;
+    pwm_set_frequency(base, freq);
+    pwm_set_duty(base, duty);
 }

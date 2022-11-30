@@ -5,20 +5,23 @@
 
 #include "system.h"
 #include "anemometre/anemometre.h"
+#include "girouette/girouette.h"
 #include "pwm/pwm.h"
 
 int main()
 {
     alt_putstr("Hello from Nios II!\n");
     anemometre_set_config((void *)ANEMO_BASE, ANEMOMETRE_CONFIG_CONTINU | ANEMOMETRE_CONFIG_RESET);
+    girouette_set_config((void *)GIROUETTE_BASE, GIROUETTE_CONFIG_CONTINU | GIROUETTE_CONFIG_RESET);
     pwm_set_configuration((void *)PWM0_BASE, ~PWM_RESET);
-    pwm_set_frequency((void *)PWM0_BASE, 100);
-    pwm_set_duty((void *)PWM0_BASE, 50);
+    pwm_set_ton_toff((void *)PWM0_BASE, 25000, 10000);
     /* Event loop never exits. */
     while (1)
     {
         printf("anemo_config = %02lX\n", anemometre_get_config((void *)ANEMO_BASE));
         printf("anemo = %d\n", anemometre_get_wind_speed((void *)ANEMO_BASE));
+        printf("giro_config = %02lX\n", girouette_get_config((void *)GIROUETTE_BASE));
+        printf("giro = %d\n", girouette_get_wind_direction((void *)GIROUETTE_BASE));
         for (int i = 0; i < 8; i++)
         {
             IOWR_32DIRECT(LED_BASE, 0, 1 << i);
