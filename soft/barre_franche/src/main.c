@@ -8,12 +8,16 @@
 #include "girouette/girouette.h"
 #include "pwm/pwm.h"
 #include "verin/verin.h"
+#include "gestion_commande/gestion_commande.h"
+#include "cap/cap.h"
 int main()
 {
     alt_putstr("Hello from Nios II!\n");
     anemometre_set_config((void *)ANEMO_BASE, ANEMOMETRE_CONFIG_CONTINU | ANEMOMETRE_CONFIG_RESET);
     girouette_set_config((void *)GIROUETTE_BASE, GIROUETTE_CONFIG_CONTINU | GIROUETTE_CONFIG_RESET);
     pwm_set_configuration((void *)PWM0_BASE, ~PWM_RESET);
+    gestion_commande_set_config((void *)GESTION_COMMANDE_BASE, GESTION_COMMANDE_CONFIG_RESET);
+    cap_set_config((void *)CAP_BASE, CAP_CONFIG_RESET);
     pwm_set_ton_toff((void *)PWM0_BASE, 25000, 10000);
     verin_set_config((void *)VERIN_BASE, VERIN_ENABLE_PWM | VERIN_SENS | VERIN_RESET);
     verin_set_butee_g((void *)VERIN_BASE, 1000);
@@ -29,6 +33,8 @@ int main()
         printf("verin_butee_g = %04lX", verin_get_butee_g((void *)VERIN_BASE));
         printf("verin_butee_d = %04lX", verin_get_butee_d((void *)VERIN_BASE));
         printf("verin_angle_barre = %04lX", verin_get_angle_barre((void *)VERIN_BASE));
+        printf("gestion_commande_code_foncton = %d", gestion_commande_get_code_fonction((void *)GESTION_COMMANDE_BASE));
+        printf("gestion_commande_code_foncton = %d", cap_get_direction((void *)GESTION_COMMANDE_BASE));
         for (int i = 0; i < 8; i++)
         {
             IOWR_32DIRECT(LED_BASE, 0, 1 << i);

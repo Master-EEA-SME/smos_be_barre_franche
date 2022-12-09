@@ -11,11 +11,21 @@ entity top is
         pin_btn_i : in std_logic_vector(0 downto 0);
         pin_sw_i : in std_logic_vector(3 downto 0);
         pin_led_o : out std_logic_vector(7 downto 0);
+        pin_anemo_i : in std_logic;
+        pin_giro_i : in std_logic;
+        pin_cap_i : in std_logic;
         pin_verin_pwm_o : out std_logic;
         pin_verin_sens_o : out std_logic;
         pin_verin_sck_o : out std_logic;
         pin_verin_sdi_i : in std_logic;
-        pin_verin_cs_n_o : out std_logic
+        pin_verin_cs_n_o : out std_logic;
+        pin_btn_babord_i : in std_logic;
+        pin_btn_tribord_i : in std_logic;
+        pin_btn_standby_i : in std_logic;
+        pin_led_babord_o : out std_logic;
+        pin_led_tribord_o : out std_logic;
+        pin_led_standby_o : out std_logic;
+        pin_buzzer_o : out std_logic
     );
 end entity top;
 
@@ -40,7 +50,15 @@ begin
             verin_pwm_o => pin_verin_pwm_o,
             verin_sck_o => pin_verin_sck_o,
             verin_sdi_i => pin_verin_sdi_i,
-            verin_sens_o => pin_verin_sens_o
+            verin_sens_o => pin_verin_sens_o,
+            gestion_commande_btn_babord_i => pin_btn_babord_i,
+            gestion_commande_btn_standby_i => pin_btn_tribord_i,
+            gestion_commande_btn_tribord_i => pin_btn_standby_i,
+            gestion_commande_buzzer_o => pin_buzzer_o,
+            gestion_commande_led_babord_o => pin_led_babord_o,
+            gestion_commande_led_standby_o => pin_led_tribord_o,
+            gestion_commande_led_tribord_o => pin_led_standby_o,
+            cap_export => pin_cap_i
 		);
     
 end architecture rtl;

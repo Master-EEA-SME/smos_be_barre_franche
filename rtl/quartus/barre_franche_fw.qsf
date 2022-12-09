@@ -56,7 +56,7 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_verin -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_gestion_commande -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_anemometre -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_anemometre
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_anemometre
@@ -84,14 +84,36 @@ set_global_assignment -name EDA_TEST_BENCH_NAME tb_adc -section_id eda_simulatio
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_adc
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_adc
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_adc -section_id tb_adc
-set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_anemometre.vhd -section_id tb_anemometre
-set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_girouette.vhd -section_id tb_girouette
-set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f6/testbench/tb_adc.vhd -section_id tb_adc
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_verin -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_verin
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_verin
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_verin -section_id tb_verin
+set_location_assignment PIN_T10 -to pin_btn_babord_i
+set_location_assignment PIN_P9 -to pin_btn_standby_i
+set_location_assignment PIN_R11 -to pin_btn_tribord_i
+set_location_assignment PIN_T12 -to pin_buzzer_o
+set_location_assignment PIN_R10 -to pin_led_babord_o
+set_location_assignment PIN_P11 -to pin_led_tribord_o
+set_location_assignment PIN_N12 -to pin_led_standby_o
+set_location_assignment PIN_T13 -to pin_verin_cs_n_o
+set_location_assignment PIN_R12 -to pin_verin_pwm_o
+set_location_assignment PIN_F13 -to pin_verin_sck_o
+set_location_assignment PIN_T15 -to pin_verin_sdi_i
+set_location_assignment PIN_R13 -to pin_verin_sens_o
+set_location_assignment PIN_T14 -to pin_cap_i
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_anemometre.vhd -section_id tb_anemometre
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f1/testbench/tb_girouette.vhd -section_id tb_girouette
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f6/testbench/tb_adc.vhd -section_id tb_adc
 set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f6/testbench/tb_verin.vhd -section_id tb_verin
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_gestion_commande -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_gestion_commande
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id tb_gestion_commande
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_gestion_commande -section_id tb_gestion_commande
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/f7/testbench/tb_gestion_commande.vhd -section_id tb_gestion_commande
+set_global_assignment -name VHDL_FILE ../src/f7/debouncing.vhd
+set_global_assignment -name VHDL_FILE ../src/f7/gestion_commande.vhd
+set_global_assignment -name VHDL_FILE ../src/f7/buzzer.vhd
+set_global_assignment -name VHDL_FILE ../src/f7/button_push_management.vhd
 set_global_assignment -name VHDL_FILE ../src/f6/verin.vhd
 set_global_assignment -name VHDL_FILE ../src/f6/adc.vhd
 set_global_assignment -name VHDL_FILE ../src/f1/girouette.vhd

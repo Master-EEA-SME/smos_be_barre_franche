@@ -46,12 +46,12 @@ begin
         end if;
     end process;
 
-    pulse_reset <= '0' when debouncing_st = st_deboucing else '0';
+    pulse_reset <= '0' when debouncing_st = st_deboucing else '1';
 
     u_pulse : entity work.pulse
         generic map (
             G_FREQ_IN => G_FREQ_IN,
-            G_FREQ_OUT => 100
+            G_FREQ_OUT => 1000
         )
         port map (
             arst_i => arst_i,
