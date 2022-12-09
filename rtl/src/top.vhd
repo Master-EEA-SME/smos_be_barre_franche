@@ -11,8 +11,6 @@ entity top is
         pin_btn_i : in std_logic_vector(0 downto 0);
         pin_sw_i : in std_logic_vector(3 downto 0);
         pin_led_o : out std_logic_vector(7 downto 0);
-        pin_anemo_i : in std_logic;
-        pin_giro_i : in std_logic;
         pin_cap_i : in std_logic;
         pin_verin_pwm_o : out std_logic;
         pin_verin_sens_o : out std_logic;
